@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login</title>
+</head>
+<body>
+    <h1>Register a User</h1>
+    <form action="/register_user" method="POST">
+        <div>
+            <label for="inputFName">First Name:</label>
+            <input type="text" name="fn">
+        </div>
+        <div>
+            <label for="inputLName">Last Name:</label>
+            <input type="text" name="ln">
+        </div>
+        <div>
+            <label for="inputEmail">Email:</label>
+            <input type="email" name="em">
+        </div>
+        <label for="password">Password:</label>
+        <input type="password" name="pw">
+        <div>
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" name="cpw">
+        </div>
+        <input type="submit" value="Register">
+    </form>
+    <hr>
+    <h1>Login</h1>
+    <form action="/login_user" method="POST">
+        <div>
+            <label for="loginEmail">Email:</label>
+            <input type="text" name="lem">
+        </div>
+        <div>
+            <label for="loginPassword">Password:</label>
+            <input type="password" name="lpw">
+        </div>
+        <input type="submit" value="Login">
+    </form>
+
+    {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{message}} </li>                
+                {% endfor %}
+            </ul>
+            {% endif %}
+        {% endwith %}
+</body>
+</html>

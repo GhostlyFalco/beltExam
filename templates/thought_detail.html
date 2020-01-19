@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Thought Details</title>
+</head>
+<body>
+    <div>
+        <a href="/thoughts">Dashboard</a>
+        <a href="/logout">Logout</a>
+    </div>
+    {{thought_data['first_name']}} Says:
+    {{thought_data['thought']}}
+    {% if thought_data['already_liked'] %}
+        <a href="/thoughts/unlike/{{thought_data['id_thought']}}"><button>Unlike</button></a>
+    {% else %}
+        <a href="/thoughts/add_like/{{thought_data['id_thought']}}"><button>Like</button></a>
+    {% endif %}
+    <p>People who liked this thought:</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for liked_user in liked_users %}
+            <tr>
+                <td>{{liked_user['first_name']}}</td>
+                <td>{{liked_user['last_name']}}</td>
+            </tr>
+                {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
